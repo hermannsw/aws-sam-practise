@@ -6,6 +6,11 @@ Description: >
   Sample SAM Template for aws-sam-practise
 
 Globals:
+  Api:
+    Cors:
+      AllowMethods: "'*'"
+      AllowHeaders: "'*'"
+      AllowOrigin: "'*'"
   Function:
     Timeout: 30
 
