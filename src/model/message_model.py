@@ -1,6 +1,6 @@
 import os
 
-from pynamodb.attributes import UnicodeAttribute, UTCDateTimeAttribute
+from pynamodb.attributes import UnicodeAttribute
 
 from .base_model import BaseModel
 
@@ -14,4 +14,4 @@ class MessageModel(BaseModel):
         read_capacity_units = 10
 
     id = UnicodeAttribute(hash_key=True)
-    user_id = UTCDateTimeAttribute(range_key=True)
+    user_id = UnicodeAttribute(range_key=True)
