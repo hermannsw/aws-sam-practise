@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  dynamodb:
+    container_name: aws-sam-practice_dynamodb
+    build: ./dynamodb
+    volumes:
+      - dynamodb_data:/home/dynamodblocal/data
+    ports:
+      - "18000:8000"
+    command: -jar DynamoDBLocal.jar -dbPath ./data -sharedDb
+
+  dynamodb_test:
+    container_name: aws-sam-practice_dynamodb_test
+    build: ./dynamodb
+    volumes:
+      - dynamodb_test_data:/home/dynamodblocal/data
+    ports:
+      - "18001:8000"
+    command: -jar DynamoDBLocal.jar -dbPath ./data -sharedDb
+
+networks:
+  default:
+    external:
+      name: aws-sam-practice
+
+volumes:
+  dynamodb_data:
+  dynamodb_test_data:
