@@ -34,10 +34,10 @@ def apigw_event():
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
             },
             "pathParameters": {
-                "id": "id_02"
+                "id": "id_02",
+                "user_id": "user_02"
             },
             "httpMethod": "DELETE",
-            "body": "{\"user_id\":\"user_02\"}",
         }
     ]
 
