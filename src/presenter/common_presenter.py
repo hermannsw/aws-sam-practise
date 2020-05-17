@@ -1,13 +1,14 @@
 class RequestSucceededPresenter:
     @staticmethod
     def response(message):
+        m = message.to_dict()
         return {
             'headers': {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
             },
             'statusCode': '200',
-            'body': "{\"message\":\"" + message + "\"}",
+            'body': "{\"message\":{\"id\":\"" + m['id'] + "\",\"user_id\":\"" + m['user_id'] + "\"}}",
         }
 
 
