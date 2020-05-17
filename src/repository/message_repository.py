@@ -9,7 +9,7 @@ class Repository:
         res = [e for e in self.model.query(pk, self.model.user_id == sk)]
         if len(res) == 0:
             return DoesNotExist()
-        return res
+        return res[0]
 
     def save(self, data):
         try:
@@ -19,5 +19,11 @@ class Repository:
             return e
         return message
 
-    def delete(self):
-        pass
+    def delete(self, data):
+        self.model = data
+        try:
+            res = self.model.delete()
+        except Exception as e:
+            return e
+        if res.get('ConsumedCapacity'):
+            return self.model
