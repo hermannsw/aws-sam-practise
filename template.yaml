@@ -13,6 +13,13 @@ Globals:
       AllowOrigin: "'*'"
   Function:
     Timeout: 30
+    Environment:
+      Variables:
+        REGION: !FindInMap [ EnvMap, !Ref Env, AwsRegion ]
+        #        DYNAMODB_HOST: !Sub "https://dynamodb.${AWS::Region}.amazonaws.com"
+        #        DYNAMODB_TABLE: !Ref MapEventsApiDynamo
+        DYNAMODB_HOST: 'http://172.18.0.1:18000'
+        DYNAMODB_TABLE: 'messages'
 
 Resources:
   DefaultFunction:
@@ -22,11 +29,21 @@ Resources:
       Handler: app.lambda_handler
       Runtime: python3.7
       Events:
-        HelloWorld:
+        Get:
           Type: Api
           Properties:
-            Path: /
+            Path: /{id}/{user_id}
             Method: get
+        Create:
+          Type: Api
+          Properties:
+            Path: /c
+            Method: post
+        Delete:
+          Type: Api
+          Properties:
+            Path: /d/{id}/{user_id}
+            Method: delete
 
   DefaultApiDynamo:
     Type: AWS::DynamoDB::Table
