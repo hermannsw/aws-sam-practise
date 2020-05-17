@@ -11,6 +11,19 @@ class RequestSucceededPresenter:
         }
 
 
+class CreateSucceededPresenter:
+    @staticmethod
+    def response(message):
+        return {
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            'statusCode': '201',
+            'body': "{\"message\":\"" + message + "\"}",
+        }
+
+
 class BadRequestPresenter:
     @staticmethod
     def response(message):
