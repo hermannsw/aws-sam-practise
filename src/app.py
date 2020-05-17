@@ -1,9 +1,12 @@
 import json
 
+from pynamodb.exceptions import DoesNotExist
+
 from model.message_model import MessageModel
 from presenter.common_presenter import (BadRequestPresenter,
                                         CreateSucceededPresenter,
                                         MethodNotAllowedPresenter,
+                                        NotFoundPresenter,
                                         RequestSucceededPresenter)
 from repository.message_repository import Repository
 from usecases.delete_message_usecase import DeleteMessageUseCase
@@ -24,6 +27,8 @@ def get(data):
     repository = Repository(MessageModel)
     usecase = GetMessageUseCase(repository)
     res = usecase.execute(data)
+    if isinstance(res, DoesNotExist):
+        return NotFoundPresenter.response('Message not found.')
     return RequestSucceededPresenter.response(res)
 
 
