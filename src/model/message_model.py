@@ -15,3 +15,4 @@ class MessageModel(BaseModel):
 
     id = UnicodeAttribute(hash_key=True)
     user_id = UnicodeAttribute(range_key=True)
+    body = UnicodeAttribute()

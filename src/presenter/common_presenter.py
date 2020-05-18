@@ -8,7 +8,8 @@ class RequestSucceededPresenter:
                 'Content-Type': 'application/json',
             },
             'statusCode': '200',
-            'body': "{\"message\":{\"id\":\"" + m['id'] + "\",\"user_id\":\"" + m['user_id'] + "\"}}",
+            'body': "{\"message\":{\"id\":\"" + m['id'] + "\",\"user_id\":\"" + m['user_id'] + "\",\"body\":\""
+                    + m['body'] + "\"}}",
         }
 
 
