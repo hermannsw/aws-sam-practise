@@ -18,5 +18,9 @@ def setup():
     if MessageModel.exists():
         MessageModel.delete_table()
     MessageModel.create_table(wait=True)
-    m = MessageModel('id_01', 'user_01')
+    m = MessageModel(
+        'id_01',
+        'user_01',
+        body='message_01'
+    )
     m.save()

@@ -25,7 +25,7 @@ def apigw_event():
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
             },
             "httpMethod": "POST",
-            "body": "{\"id\":\"id_02\", \"user_id\":\"user_02\"}",
+            "body": "{\"id\":\"id_02\", \"user_id\":\"user_02\", \"body\":\"message_02\"}",
         },
         {
             "headers": {
@@ -50,9 +50,11 @@ def test_lambda_handler():
             assert res['statusCode'] == '200'
             assert data['message']['id'] == 'id_01'
             assert data['message']['user_id'] == 'user_01'
+            assert data['message']['body'] == 'message_01'
         elif e['httpMethod'] == 'POST':
             assert res['statusCode'] == '201'
         elif e['httpMethod'] == 'DELETE':
             assert res["statusCode"] == '200'
             assert data['message']['id'] == 'id_02'
             assert data['message']['user_id'] == 'user_02'
+            assert data['message']['body'] == 'message_02'
