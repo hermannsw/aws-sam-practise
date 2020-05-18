@@ -74,9 +74,7 @@ Resources:
           KeyType: HASH
         - AttributeName: user_id
           KeyType: RANGE
-      ProvisionedThroughput:
-        ReadCapacityUnits: "10"
-        WriteCapacityUnits: "10"
+      BillingMode: PAY_PER_REQUEST
 
 Outputs:
   DefaultApi:
