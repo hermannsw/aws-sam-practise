@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   aws-sam-practise
 
-  SAM Template for Production
+  SAM Template for Local
 
 Globals:
   Api:
@@ -15,9 +15,9 @@ Globals:
     Timeout: 30
     Environment:
       Variables:
-        REGION: 'ap-northeast-1'
-        DYNAMODB_HOST: !Sub "https://dynamodb.${AWS::Region}.amazonaws.com"
-        DYNAMODB_TABLE: !Ref DefaultApiDynamo
+        REGION: 'us-west-1'
+        DYNAMODB_HOST: 'http://172.19.0.1:18000'
+        DYNAMODB_TABLE: 'messages'
 
 Resources:
   DefaultFunction:
