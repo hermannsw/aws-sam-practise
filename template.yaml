@@ -52,6 +52,8 @@ Resources:
           AttributeType: S
         - AttributeName: user_id
           AttributeType: S
+        - AttributeName: body
+          AttributeType: S
       KeySchema:
         - AttributeName: id
           KeyType: HASH
@@ -59,9 +61,9 @@ Resources:
           KeyType: RANGE
       BillingMode: PAY_PER_REQUEST
       GlobalSecondaryIndexes:
-        - IndexName: GSI
+        - IndexName: gsi_message_body
           KeySchema:
-            - AttributeName: user_id
+            - AttributeName: body
               KeyType: HASH
           Projection:
             ProjectionType: KEYS_ONLY
